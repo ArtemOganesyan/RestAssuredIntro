@@ -7,6 +7,7 @@ import org.junit.jupiter.api.*;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertEquals;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RecruitAuthTests {
@@ -32,6 +33,7 @@ public class RecruitAuthTests {
                 .statusCode(200)
                 .extract().response();
 
+        assertEquals(200, response.getStatusCode());
         token = response.path("token");
         System.out.println("Token: " + token);
     }
